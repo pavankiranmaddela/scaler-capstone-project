@@ -19,10 +19,14 @@ import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 //import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
+
+import static com.pk.ev.vehicle.catalog.constants.RoleConstants.ROLE_EV_APP_ADMIN;
+import static com.pk.ev.vehicle.catalog.constants.RoleConstants.ROLE_EV_USER;
 
 @RestController
 @RequestMapping("/vehicle-makes")
@@ -35,17 +39,8 @@ public class VehicleMakeController {
 
     // ─── POST /vehicle-makes ─────────────────────────────────────────────────
 
-    @Operation(
-            summary = "Create a vehicle make (manufacturer)",
-            security = @SecurityRequirement(name = "bearerAuth")
-    )
-    @ApiResponses({
-            @ApiResponse(responseCode = "201", description = "Make created"),
-            @ApiResponse(responseCode = "400", description = "Validation error"),
-            @ApiResponse(responseCode = "409", description = "Duplicate name")
-    })
     @PostMapping
-    //@PreAuthorize("hasRole('ADMIN')")
+    //@PreAuthorize("hasRole('ROLE_EV_APP_ADMIN')")
     public ResponseEntity<MakeResponse> createMake(
             @Valid @RequestBody CreateMakeRequest request
     ) {
@@ -55,8 +50,8 @@ public class VehicleMakeController {
 
     // ─── GET /vehicle-makes ──────────────────────────────────────────────────
 
-    @Operation(summary = "List all vehicle makes — paginated, filterable by status and country")
     @GetMapping
+    @PreAuthorize(ROLE_EV_USER)
     public ResponseEntity<PagedMakesResponse> getAllMakes(
             @Parameter(description = "Filter by status (ACTIVE / INACTIVE)")
             @RequestParam(required = false) MakeStatus status,
@@ -73,13 +68,8 @@ public class VehicleMakeController {
     }
 
     // ─── GET /vehicle-makes/{makeId} ─────────────────────────────────────────
-
-    @Operation(summary = "Get full detail for a vehicle make")
-    @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "Make found"),
-            @ApiResponse(responseCode = "404", description = "Make not found")
-    })
     @GetMapping("/{makeId}")
+    @PreAuthorize(ROLE_EV_USER)
     public ResponseEntity<MakeResponse> getMakeById(
             @PathVariable UUID makeId
     ) {
@@ -87,13 +77,8 @@ public class VehicleMakeController {
     }
 
     // ─── PUT /vehicle-makes/{makeId} ─────────────────────────────────────────
-
-    @Operation(
-            summary = "Update name, logo, country, or status of a make",
-            security = @SecurityRequirement(name = "bearerAuth")
-    )
     @PutMapping("/{makeId}")
-    //@PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize(ROLE_EV_APP_ADMIN)
     public ResponseEntity<MakeResponse> updateMake(
             @PathVariable UUID makeId,
             @Valid @RequestBody UpdateMakeRequest request
@@ -102,13 +87,8 @@ public class VehicleMakeController {
     }
 
     // ─── DELETE /vehicle-makes/{makeId} ──────────────────────────────────────
-
-    @Operation(
-            summary = "Soft-delete a make (cascades INACTIVE status to all child models)",
-            security = @SecurityRequirement(name = "bearerAuth")
-    )
     @DeleteMapping("/{makeId}")
-    //@PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize(ROLE_EV_APP_ADMIN)
     public ResponseEntity<Void> deleteMake(
             @PathVariable UUID makeId
     ) {

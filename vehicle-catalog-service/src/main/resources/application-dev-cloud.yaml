@@ -1,12 +1,10 @@
 spring:
   application:
     name: vehicle-catalog-service
-  profiles:
-    active: dev-cloud
   datasource:
-    url: jdbc:postgresql://localhost:5432/vehicle_catalog
+    url: jdbc:postgresql://pk-ev-dev.postgres.database.azure.com:5432/vehicle_catalog
     username: postgres
-    password: postgres
+    password: Password!23
   jpa:
     hibernate:
       ddl-auto: update
@@ -18,8 +16,8 @@ spring:
   # Redis Server Connection
   data:
    redis:
-    host: localhost
-    port: 6379
+    host: pk-ev-dev.centralindia.redis.azure.net
+    port: 10000
   # password: yourpassword (if applicable)
 
 # JWT Configuration
