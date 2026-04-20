@@ -148,7 +148,7 @@ public class VehicleMakeServiceImpl implements VehicleMakeService {
 
     // ─── Helpers ─────────────────────────────────────────────────────────────
 
-    private VehicleMake findMakeOrThrow(UUID makeId) {
+    public VehicleMake findMakeOrThrow(UUID makeId) {
         return makeRepository.findById(makeId)
                 .orElseThrow(() -> new ResourceNotFoundException(
                         "Vehicle make not found with id: " + makeId

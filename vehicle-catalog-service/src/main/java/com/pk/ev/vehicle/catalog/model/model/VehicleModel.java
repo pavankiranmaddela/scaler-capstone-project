@@ -1,20 +1,18 @@
 package com.pk.ev.vehicle.catalog.model.model;
 
 import com.pk.ev.vehicle.catalog.battery.model.BatteryPack;
-import com.pk.ev.vehicle.catalog.battery.model.ChargingConfiguration;
+import com.pk.ev.vehicle.catalog.chargingconfig.model.ChargingConfiguration;
 import com.pk.ev.vehicle.catalog.model.enums.BodyType;
 import com.pk.ev.vehicle.catalog.model.enums.DriveType;
 import com.pk.ev.vehicle.catalog.model.enums.ModelStatus;
-import com.pk.ev.vehicle.catalog.chargingspec.model.VehicleChargingSpec;
 import com.pk.ev.vehicle.catalog.make.model.VehicleMake;
-import com.pk.ev.vehicle.catalog.variant.model.ModelTrim;
-import com.pk.ev.vehicle.catalog.variant.model.VariantListing;
+import com.pk.ev.vehicle.catalog.trim.model.ModelTrim;
+import com.pk.ev.vehicle.catalog.variantlisting.model.VariantListing;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;

@@ -1,7 +1,7 @@
 package com.pk.ev.vehicle.catalog.customer.dto;
 
 import com.pk.ev.vehicle.catalog.chargingspec.enums.ConnectorType;
-import com.pk.ev.vehicle.catalog.variant.enums.VariantStatus;
+import com.pk.ev.vehicle.catalog.trim.enums.VariantStatus;
 import jakarta.validation.constraints.*;
 
 import java.math.BigDecimal;

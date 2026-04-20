@@ -7,7 +7,7 @@ import com.pk.ev.vehicle.catalog.chargingstandard.mapper.ChargingStandardMapper;
 import com.pk.ev.vehicle.catalog.chargingstandard.model.ChargingStandard;
 import com.pk.ev.vehicle.catalog.chargingstandard.repository.ChargingStandardRepository;
 import com.pk.ev.vehicle.catalog.chargingspec.repository.VehicleChargingSpecRepository;
-import com.pk.ev.vehicle.catalog.variant.repository.VariantListingRepository;
+import com.pk.ev.vehicle.catalog.variantlisting.repository.VariantListingRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;

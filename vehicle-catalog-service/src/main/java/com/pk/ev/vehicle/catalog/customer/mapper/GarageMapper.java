@@ -1,14 +1,13 @@
 package com.pk.ev.vehicle.catalog.customer.mapper;
 
-import com.pk.ev.vehicle.catalog.battery.model.ChargingConfiguration;
+import com.pk.ev.vehicle.catalog.chargingconfig.model.ChargingConfiguration;
 import com.pk.ev.vehicle.catalog.customer.domain.CustomerVehicle;
 import com.pk.ev.vehicle.catalog.customer.dto.GarageDtos.*;
-import com.pk.ev.vehicle.catalog.variant.model.VariantListing;
+import com.pk.ev.vehicle.catalog.variantlisting.model.VariantListing;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 @Component

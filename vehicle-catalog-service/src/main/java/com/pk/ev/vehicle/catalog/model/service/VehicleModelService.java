@@ -1,6 +1,7 @@
 package com.pk.ev.vehicle.catalog.model.service;
 
 import com.pk.ev.vehicle.catalog.model.dtos.VehicleModelDtos.*;
+import com.pk.ev.vehicle.catalog.model.model.VehicleModel;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
@@ -37,4 +38,6 @@ public interface VehicleModelService {
 
     // GET /vehicle-models/search
     SearchModelsResponse search(String query, String status, Pageable pageable);
+
+    VehicleModel findModelOrThrow(UUID modelId);
 }

@@ -8,7 +8,6 @@ import com.pk.ev.vehicle.catalog.model.mapper.VehicleModelMapper;
 import com.pk.ev.vehicle.catalog.model.model.ModelImage;
 import com.pk.ev.vehicle.catalog.make.model.VehicleMake;
 import com.pk.ev.vehicle.catalog.model.model.VehicleModel;
-import com.pk.ev.vehicle.catalog.make.repository.MakeRegionRepository;
 import com.pk.ev.vehicle.catalog.model.repository.ModelImageRepository;
 import com.pk.ev.vehicle.catalog.make.repository.VehicleMakeRepository;
 import com.pk.ev.vehicle.catalog.model.repository.VehicleModelRepository;
@@ -33,7 +32,7 @@ public class VehicleModelServiceImpl implements VehicleModelService {
     private final VehicleModelRepository modelRepository;
     private final VehicleMakeRepository  makeRepository;
     private final ModelImageRepository   imageRepository;
-    private final VehicleModelMapper     mapper;
+    private final VehicleModelMapper modelMapper;
 
     // ─── CREATE ──────────────────────────────────────────────────────────────
 
@@ -54,11 +53,11 @@ public class VehicleModelServiceImpl implements VehicleModelService {
             );
         }
 
-        VehicleModel model = mapper.toEntity(request, make);
+        VehicleModel model = modelMapper.toEntity(request, make);
         model = modelRepository.save(model);
 
         log.info("Created vehicle model id={}", model.getId());
-        return mapper.toResponse(model);
+        return modelMapper.toResponse(model);
     }
 
     // ─── READ — list ─────────────────────────────────────────────────────────
@@ -77,14 +76,14 @@ public class VehicleModelServiceImpl implements VehicleModelService {
                 pageable
         );
 
-        return mapper.toPagedResponse(page);
+        return modelMapper.toPagedResponse(page);
     }
 
     // ─── READ — single ───────────────────────────────────────────────────────
 
     @Override
     public ModelResponse getModelById(UUID modelId) {
-        return mapper.toResponse(findModelOrThrow(modelId));
+        return modelMapper.toResponse(findModelOrThrow(modelId));
     }
 
     // ─── UPDATE — full ───────────────────────────────────────────────────────
@@ -110,8 +109,8 @@ public class VehicleModelServiceImpl implements VehicleModelService {
             }
         }
 
-        mapper.applyUpdate(request, model);
-        return mapper.toResponse(modelRepository.save(model));
+        modelMapper.applyUpdate(request, model);
+        return modelMapper.toResponse(modelRepository.save(model));
     }
 
     // ─── DELETE ──────────────────────────────────────────────────────────────
@@ -133,7 +132,7 @@ public class VehicleModelServiceImpl implements VehicleModelService {
         log.info("Changing status of model id={} to {}", modelId, request.status());
         VehicleModel model = findModelOrThrow(modelId);
         model.setStatus(request.status());
-        return mapper.toResponse(modelRepository.save(model));
+        return modelMapper.toResponse(modelRepository.save(model));
     }
 
     // ─── IMAGES — add ────────────────────────────────────────────────────────
@@ -158,7 +157,7 @@ public class VehicleModelServiceImpl implements VehicleModelService {
                 .build();
 
         image = imageRepository.save(image);
-        return mapper.toImageResponse(image);
+        return modelMapper.toImageResponse(image);
     }
 
     // ─── IMAGES — list ───────────────────────────────────────────────────────
@@ -166,7 +165,7 @@ public class VehicleModelServiceImpl implements VehicleModelService {
     @Override
     public List<ModelImageResponse> getImages(UUID modelId) {
         findModelOrThrow(modelId);   // validate existence
-        return mapper.toImageResponseList(imageRepository.findByModelId(modelId));
+        return modelMapper.toImageResponseList(imageRepository.findByModelId(modelId));
     }
 
     // ─── IMAGES — delete ─────────────────────────────────────────────────────
@@ -199,12 +198,12 @@ public class VehicleModelServiceImpl implements VehicleModelService {
         }
 
         Page<VehicleModel> page = modelRepository.searchByKeyword(query, status, pageable);
-        return mapper.toSearchResponse(page, query);
+        return modelMapper.toSearchResponse(page, query);
     }
 
     // ─── Private helpers ─────────────────────────────────────────────────────
 
-    private VehicleModel findModelOrThrow(UUID modelId) {
+    public VehicleModel findModelOrThrow(UUID modelId) {
         return modelRepository.findById(modelId)
                 .orElseThrow(() -> new ResourceNotFoundException(
                         "Vehicle model not found with id: " + modelId

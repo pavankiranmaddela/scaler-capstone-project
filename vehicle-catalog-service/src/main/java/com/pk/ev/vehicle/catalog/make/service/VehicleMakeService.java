@@ -2,6 +2,7 @@ package com.pk.ev.vehicle.catalog.make.service;
 
 import com.pk.ev.vehicle.catalog.make.dto.VehicleMakeDtos.*;
 import com.pk.ev.vehicle.catalog.make.enums.MakeStatus;
+import com.pk.ev.vehicle.catalog.make.model.VehicleMake;
 import com.pk.ev.vehicle.catalog.model.model.VehicleModel;
 import org.springframework.data.domain.Pageable;
 
@@ -33,4 +34,6 @@ public interface VehicleMakeService {
 
     // GET /vehicle-makes/{makeId}/regions
     List<RegionResponse> getRegionsByMake(UUID makeId);
+
+    VehicleMake findMakeOrThrow(UUID makeId);
 }

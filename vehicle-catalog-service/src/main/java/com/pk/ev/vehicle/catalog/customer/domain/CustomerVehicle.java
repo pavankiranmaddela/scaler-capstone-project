@@ -1,6 +1,6 @@
 package com.pk.ev.vehicle.catalog.customer.domain;
 
-import com.pk.ev.vehicle.catalog.variant.model.VariantListing;
+import com.pk.ev.vehicle.catalog.variantlisting.model.VariantListing;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;

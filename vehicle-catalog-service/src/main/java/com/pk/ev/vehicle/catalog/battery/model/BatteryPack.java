@@ -2,7 +2,7 @@ package com.pk.ev.vehicle.catalog.battery.model;
 
 import com.pk.ev.vehicle.catalog.battery.enums.BatteryChemistry;
 import com.pk.ev.vehicle.catalog.model.model.VehicleModel;
-import com.pk.ev.vehicle.catalog.variant.model.VariantListing;
+import com.pk.ev.vehicle.catalog.variantlisting.model.VariantListing;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -61,7 +61,7 @@ public class BatteryPack {
     private Integer rangeKm;                      // ARAI / WLTP certified
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "chemistry", length = 10)
+    @Column(name = "chemistry", length = 30)
     private BatteryChemistry chemistry;           // LFP, NMC, etc.
 
     @Column(name = "cells_configuration", length = 50)

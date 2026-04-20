@@ -1,6 +1,6 @@
 package com.pk.ev.vehicle.catalog.chargingspec.model;
 
-import com.pk.ev.vehicle.catalog.battery.model.ChargingConfiguration;
+import com.pk.ev.vehicle.catalog.chargingconfig.model.ChargingConfiguration;
 import com.pk.ev.vehicle.catalog.chargingspec.enums.ConnectorType;
 import com.pk.ev.vehicle.catalog.chargingspec.enums.CurrentType;
 import jakarta.persistence.*;

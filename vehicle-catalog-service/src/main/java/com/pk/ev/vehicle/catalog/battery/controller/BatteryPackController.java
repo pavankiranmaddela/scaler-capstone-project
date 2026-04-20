@@ -1,7 +1,7 @@
 package com.pk.ev.vehicle.catalog.battery.controller;
 
-import com.pk.ev.vehicle.catalog.variant.dto.Group3Dtos.*;
-import com.pk.ev.vehicle.catalog.variant.service.Group3Service;
+import com.pk.ev.vehicle.catalog.battery.service.BatteryPackService;
+import com.pk.ev.vehicle.catalog.battery.dtos.BatteryPackDtos.*;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -12,7 +12,6 @@ import org.springframework.http.ResponseEntity;
 //import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
 
@@ -26,7 +25,7 @@ import java.util.UUID;
 @Tag(name = "Battery Packs", description = "Manage battery pack configs per vehicle model — Group 3")
 class BatteryPackController {
 
-    private final Group3Service service;
+    private final BatteryPackService batteryPackService;
 
     @PostMapping
     //@PreAuthorize("hasRole('ADMIN')")
@@ -35,7 +34,7 @@ class BatteryPackController {
             @PathVariable UUID modelId,
             @Valid @RequestBody CreateBatteryPackRequest request
     ) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(service.addBatteryPack(modelId, request));
+        return ResponseEntity.status(HttpStatus.CREATED).body(batteryPackService.addBatteryPack(modelId, request));
     }
 
     @GetMapping
@@ -44,7 +43,7 @@ class BatteryPackController {
             @PathVariable UUID modelId,
             @RequestParam(defaultValue = "true") boolean activeOnly
     ) {
-        return ResponseEntity.ok(service.getBatteryPacks(modelId, activeOnly));
+        return ResponseEntity.ok(batteryPackService.getBatteryPacks(modelId, activeOnly));
     }
 
     @GetMapping("/{packId}")
@@ -52,7 +51,7 @@ class BatteryPackController {
     public ResponseEntity<BatteryPackResponse> getBatteryPackById(
             @PathVariable UUID modelId, @PathVariable UUID packId
     ) {
-        return ResponseEntity.ok(service.getBatteryPackById(modelId, packId));
+        return ResponseEntity.ok(batteryPackService.getBatteryPackById(modelId, packId));
     }
 
     @PutMapping("/{packId}")
@@ -62,7 +61,7 @@ class BatteryPackController {
             @PathVariable UUID modelId, @PathVariable UUID packId,
             @Valid @RequestBody UpdateBatteryPackRequest request
     ) {
-        return ResponseEntity.ok(service.updateBatteryPack(modelId, packId, request));
+        return ResponseEntity.ok(batteryPackService.updateBatteryPack(modelId, packId, request));
     }
 
     @DeleteMapping("/{packId}")
@@ -71,7 +70,7 @@ class BatteryPackController {
     public ResponseEntity<Void> deleteBatteryPack(
             @PathVariable UUID modelId, @PathVariable UUID packId
     ) {
-        service.deleteBatteryPack(modelId, packId);
+        batteryPackService.deleteBatteryPack(modelId, packId);
         return ResponseEntity.noContent().build();
     }
 }
