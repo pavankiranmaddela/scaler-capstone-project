@@ -1,6 +1,6 @@
 package com.pk.ev.vehicle.catalog.variantlisting.repository;
 
-import com.pk.ev.vehicle.catalog.trim.enums.VariantStatus;
+import com.pk.ev.vehicle.catalog.modeltrim.enums.VariantStatus;
 import com.pk.ev.vehicle.catalog.variantlisting.model.VariantListing;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

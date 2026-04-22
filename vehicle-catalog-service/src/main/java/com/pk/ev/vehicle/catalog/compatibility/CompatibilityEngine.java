@@ -2,6 +2,7 @@ package com.pk.ev.vehicle.catalog.compatibility;
 
 import com.pk.ev.vehicle.catalog.chargingspec.enums.ConnectorType;
 import com.pk.ev.vehicle.catalog.chargingspec.model.VehicleChargingSpec;
+import com.pk.ev.vehicle.catalog.station.StationConnector;
 import com.pk.ev.vehicle.catalog.variantlisting.model.VariantListing;
 import org.springframework.stereotype.Component;
 import com.pk.ev.vehicle.catalog.compatibility.CompatibilityDtos.*;

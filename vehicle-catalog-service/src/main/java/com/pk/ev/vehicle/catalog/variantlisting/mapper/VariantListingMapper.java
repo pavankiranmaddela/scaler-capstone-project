@@ -3,7 +3,7 @@ package com.pk.ev.vehicle.catalog.variantlisting.mapper;
 import com.pk.ev.vehicle.catalog.battery.mapper.BatteryPackMapper;
 import com.pk.ev.vehicle.catalog.chargingconfig.mapper.ChargingConfigMapper;
 import com.pk.ev.vehicle.catalog.variantlisting.dtos.VariantListingDto.*;
-import com.pk.ev.vehicle.catalog.trim.mapper.ModelTrimMapper;
+import com.pk.ev.vehicle.catalog.modeltrim.mapper.ModelTrimMapper;
 import com.pk.ev.vehicle.catalog.variantlisting.model.VariantListing;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;

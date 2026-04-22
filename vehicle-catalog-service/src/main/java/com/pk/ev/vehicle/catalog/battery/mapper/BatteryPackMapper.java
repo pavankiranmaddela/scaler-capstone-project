@@ -1,7 +1,7 @@
 package com.pk.ev.vehicle.catalog.battery.mapper;
 
 import com.pk.ev.vehicle.catalog.battery.model.BatteryPack;
-import com.pk.ev.vehicle.catalog.model.model.VehicleModel;
+import com.pk.ev.vehicle.catalog.vehiclemodel.model.VehicleModel;
 import com.pk.ev.vehicle.catalog.battery.dtos.BatteryPackDtos.*;
 import org.springframework.stereotype.Component;
 

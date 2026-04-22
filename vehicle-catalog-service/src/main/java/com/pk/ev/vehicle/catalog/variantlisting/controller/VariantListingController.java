@@ -1,6 +1,6 @@
 package com.pk.ev.vehicle.catalog.variantlisting.controller;
 
-import com.pk.ev.vehicle.catalog.trim.enums.VariantStatus;
+import com.pk.ev.vehicle.catalog.modeltrim.enums.VariantStatus;
 import com.pk.ev.vehicle.catalog.variantlisting.dtos.VariantListingDto.*;
 import com.pk.ev.vehicle.catalog.variantlisting.service.VariantListingService;
 import io.swagger.v3.oas.annotations.Operation;

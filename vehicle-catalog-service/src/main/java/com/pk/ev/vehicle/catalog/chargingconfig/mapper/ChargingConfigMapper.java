@@ -2,7 +2,7 @@ package com.pk.ev.vehicle.catalog.chargingconfig.mapper;
 
 import com.pk.ev.vehicle.catalog.chargingconfig.model.ChargingConfiguration;
 import com.pk.ev.vehicle.catalog.chargingspec.mapper.ChargingSpecMapper;
-import com.pk.ev.vehicle.catalog.model.model.VehicleModel;
+import com.pk.ev.vehicle.catalog.vehiclemodel.model.VehicleModel;
 import com.pk.ev.vehicle.catalog.chargingconfig.dto.ChargingConfigDto.*;
 import com.pk.ev.vehicle.catalog.chargingspec.dto.ChargingSpecDto.*;
 import lombok.AllArgsConstructor;

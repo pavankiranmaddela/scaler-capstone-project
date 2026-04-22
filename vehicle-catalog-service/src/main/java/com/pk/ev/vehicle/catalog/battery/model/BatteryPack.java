@@ -1,7 +1,7 @@
 package com.pk.ev.vehicle.catalog.battery.model;
 
 import com.pk.ev.vehicle.catalog.battery.enums.BatteryChemistry;
-import com.pk.ev.vehicle.catalog.model.model.VehicleModel;
+import com.pk.ev.vehicle.catalog.vehiclemodel.model.VehicleModel;
 import com.pk.ev.vehicle.catalog.variantlisting.model.VariantListing;
 import jakarta.persistence.*;
 import lombok.*;

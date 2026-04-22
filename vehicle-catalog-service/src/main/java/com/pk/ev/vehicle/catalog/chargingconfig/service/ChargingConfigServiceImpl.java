@@ -6,8 +6,8 @@ import com.pk.ev.vehicle.catalog.chargingconfig.model.ChargingConfiguration;
 import com.pk.ev.vehicle.catalog.chargingconfig.repository.ChargingConfigurationRepository;
 import com.pk.ev.vehicle.catalog.exception.DuplicateResourceException;
 import com.pk.ev.vehicle.catalog.exception.ResourceNotFoundException;
-import com.pk.ev.vehicle.catalog.model.model.VehicleModel;
-import com.pk.ev.vehicle.catalog.model.service.VehicleModelService;
+import com.pk.ev.vehicle.catalog.vehiclemodel.model.VehicleModel;
+import com.pk.ev.vehicle.catalog.vehiclemodel.service.VehicleModelService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -19,7 +19,6 @@ import java.util.UUID;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-@Transactional(readOnly = true)
 public class ChargingConfigServiceImpl implements ChargingConfigService {
 
     private final VehicleModelService modelService;

@@ -1,8 +1,8 @@
 package com.pk.ev.vehicle.catalog.customer.service;
 
 import com.pk.ev.vehicle.catalog.compatibility.CompatibilityEngine;
-import com.pk.ev.vehicle.catalog.compatibility.StationConnector;
-import com.pk.ev.vehicle.catalog.compatibility.StationConnectorRepository;
+import com.pk.ev.vehicle.catalog.station.StationConnector;
+import com.pk.ev.vehicle.catalog.station.StationConnectorRepository;
 import com.pk.ev.vehicle.catalog.customer.domain.CustomerVehicle;
 import com.pk.ev.vehicle.catalog.customer.dto.GarageDtos.*;
 import com.pk.ev.vehicle.catalog.compatibility.CompatibilityDtos.*;

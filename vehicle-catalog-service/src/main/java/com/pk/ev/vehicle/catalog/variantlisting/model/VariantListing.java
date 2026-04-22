@@ -2,9 +2,9 @@ package com.pk.ev.vehicle.catalog.variantlisting.model;
 
 import com.pk.ev.vehicle.catalog.battery.model.BatteryPack;
 import com.pk.ev.vehicle.catalog.chargingconfig.model.ChargingConfiguration;
-import com.pk.ev.vehicle.catalog.model.model.VehicleModel;
-import com.pk.ev.vehicle.catalog.trim.enums.VariantStatus;
-import com.pk.ev.vehicle.catalog.trim.model.ModelTrim;
+import com.pk.ev.vehicle.catalog.vehiclemodel.model.VehicleModel;
+import com.pk.ev.vehicle.catalog.modeltrim.enums.VariantStatus;
+import com.pk.ev.vehicle.catalog.modeltrim.model.ModelTrim;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
