@@ -52,7 +52,11 @@ class VariantListingController {
             @RequestParam(defaultValue = "sortOrder")  String sort
     ) {
         VariantStatus vs = null;
-        if (status != null) vs = VariantStatus.valueOf(status.toUpperCase());
+        try {
+            if (status != null) vs = VariantStatus.valueOf(status.toUpperCase());
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().build();
+        }
 
         VariantFilterParams filters = new VariantFilterParams(
                 modelId, trimId, minPrice, maxPrice, minBatteryKwh, vs, page, size, sort

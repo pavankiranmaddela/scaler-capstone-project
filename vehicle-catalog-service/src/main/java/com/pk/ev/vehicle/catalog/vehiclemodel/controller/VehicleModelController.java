@@ -68,12 +68,17 @@ public class VehicleModelController {
             @RequestParam(defaultValue = "name") String sort
     ) {
         ConnectorType ct = null;
-        if (connectorType != null) {
-            ct = ConnectorType.valueOf(connectorType.toUpperCase());
-        }
         ModelStatus ms = null;
-        if (status != null) {
-            ms = ModelStatus.valueOf(status.toUpperCase());
+
+        try {
+            if (connectorType != null) {
+                ct = ConnectorType.valueOf(connectorType.toUpperCase());
+            }
+            if (status != null) {
+                ms = ModelStatus.valueOf(status.toUpperCase());
+            }
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().build();
         }
 
         ModelFilterParams filters = new ModelFilterParams(
