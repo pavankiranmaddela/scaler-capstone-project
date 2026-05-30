@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 //import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,7 +29,7 @@ class ModelTrimController {
     private final ModelTrimService modelTrimService;
 
     @PostMapping
-    //@PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ROLE_EV_APP_ADMIN')")
     @Operation(summary = "Add a trim grade", security = @SecurityRequirement(name = "bearerAuth"))
     public ResponseEntity<ModelTrimResponse> addTrim(
             @PathVariable UUID modelId,
@@ -55,7 +56,7 @@ class ModelTrimController {
     }
 
     @PutMapping("/{trimId}")
-    //@PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ROLE_EV_APP_ADMIN')")
     @Operation(summary = "Update a trim", security = @SecurityRequirement(name = "bearerAuth"))
     public ResponseEntity<ModelTrimResponse> updateTrim(
             @PathVariable UUID modelId, @PathVariable UUID trimId,
@@ -65,7 +66,7 @@ class ModelTrimController {
     }
 
     @DeleteMapping("/{trimId}")
-    //@PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ROLE_EV_APP_ADMIN')")
     @Operation(summary = "Deactivate a trim", security = @SecurityRequirement(name = "bearerAuth"))
     public ResponseEntity<Void> deleteTrim(
             @PathVariable UUID modelId, @PathVariable UUID trimId

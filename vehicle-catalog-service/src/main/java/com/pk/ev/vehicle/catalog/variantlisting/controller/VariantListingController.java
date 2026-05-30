@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 //import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
@@ -30,7 +31,7 @@ class VariantListingController {
     private final VariantListingService variantListingService;
 
     @PostMapping
-    //@PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ROLE_EV_APP_ADMIN')")
     @Operation(summary = "Create a variant listing (the sellable SKU)", security = @SecurityRequirement(name = "bearerAuth"))
     public ResponseEntity<VariantListingResponse> createVariantListing(
             @Valid @RequestBody CreateVariantListingRequest request
@@ -80,7 +81,7 @@ class VariantListingController {
     }
 
     @PutMapping("/{variantId}")
-    //@PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ROLE_EV_APP_ADMIN')")
     @Operation(summary = "Update price, status, or launch date of a variant listing",
             security = @SecurityRequirement(name = "bearerAuth"))
     public ResponseEntity<VariantListingResponse> updateVariantListing(
@@ -91,7 +92,7 @@ class VariantListingController {
     }
 
     @DeleteMapping("/{variantId}")
-    //@PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ROLE_EV_APP_ADMIN')")
     @Operation(summary = "Soft-delete a variant listing (status → DISCONTINUED)",
             security = @SecurityRequirement(name = "bearerAuth"))
     public ResponseEntity<Void> deleteVariantListing(@PathVariable UUID variantId) {

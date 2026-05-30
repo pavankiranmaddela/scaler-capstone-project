@@ -38,7 +38,7 @@ public class VehicleMakeController {
     // ─── POST /vehicle-makes ─────────────────────────────────────────────────
 
     @PostMapping
-    //@PreAuthorize("hasRole('ROLE_EV_APP_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_EV_APP_ADMIN')")
     public ResponseEntity<MakeResponse> createMake(
             @Valid @RequestBody CreateMakeRequest request
     ) {
@@ -112,7 +112,7 @@ public class VehicleMakeController {
             security = @SecurityRequirement(name = "bearerAuth")
     )
     @PostMapping("/{makeId}/regions")
-    //@PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ROLE_EV_APP_ADMIN')")
     public ResponseEntity<List<RegionResponse>> associateRegions(
             @PathVariable UUID makeId,
             @Valid @RequestBody AssociateRegionsRequest request
