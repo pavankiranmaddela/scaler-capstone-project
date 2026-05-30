@@ -12,9 +12,8 @@ spring:
       path: /h2-console
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: none
     show-sql: true
-    open-in-view: false
   flyway:
     enabled: false
     locations: classpath:db/migration
@@ -36,3 +35,5 @@ security:
   unauthenticated-endpoints:
     - "/users/authenticate"
     - "/customers/register"
+
+kind: Application

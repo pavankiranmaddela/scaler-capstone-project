@@ -4,7 +4,7 @@ spring:
   datasource:
     url: jdbc:postgresql://pk-ev-dev.postgres.database.azure.com:5432/vehicle_catalog
     username: postgres
-    password: Password!23
+    password: test@1234 # Note: this is test value actual password will be supplied via environment variable for security reasons
   jpa:
     hibernate:
       ddl-auto: update
@@ -12,13 +12,15 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
-
+  flyway:
+    enabled: false
+    locations: classpath:db/migration
   # Redis Server Connection
   data:
    redis:
     host: pk-ev-dev.centralindia.redis.azure.net
     port: 10000
-  # password: yourpassword (if applicable)
+  # password: yourpassword (if applicable supplied via env and not hardcoded for security reasons)
 
 # JWT Configuration
 jwt:
