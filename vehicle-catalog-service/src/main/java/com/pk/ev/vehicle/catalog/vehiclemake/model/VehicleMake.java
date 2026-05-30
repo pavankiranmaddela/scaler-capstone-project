@@ -1,5 +1,6 @@
 package com.pk.ev.vehicle.catalog.vehiclemake.model;
 
+import com.pk.ev.vehicle.catalog.common.model.BaseModel;
 import com.pk.ev.vehicle.catalog.vehiclemake.enums.MakeStatus;
 import com.pk.ev.vehicle.catalog.vehiclemodel.model.VehicleModel;
 import jakarta.persistence.*;
@@ -26,12 +27,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class VehicleMake {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(name = "id", updatable = false, nullable = false)
-    private UUID id;
+public class VehicleMake extends BaseModel {
 
     @Column(name = "name", nullable = false, unique = true, length = 150)
     private String name;
@@ -53,14 +49,6 @@ public class VehicleMake {
     @Builder.Default
     private MakeStatus status = MakeStatus.ACTIVE;
 
-    @CreationTimestamp
-    @Column(name = "created_at", updatable = false)
-    private Instant createdAt;
-
-    @UpdateTimestamp
-    @Column(name = "updated_at")
-    private Instant updatedAt;
-
     // Relationships
     @OneToMany(mappedBy = "make", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @Builder.Default
@@ -71,9 +59,15 @@ public class VehicleMake {
     private List<MakeRegion> regions = new ArrayList<>();
 
     // Lifecycle hook — auto-generate slug if not set
-    @PrePersist
-    @PreUpdate
-    public void generateSlug() {
+    public void onChildCreate() {
+        generateSlug();
+    }
+
+    public void onChildUpdate() {
+        generateSlug();
+    }
+
+    private void generateSlug() {
         if (this.name != null) {
             this.slug = this.name.toLowerCase()
                     .replaceAll("[^a-z0-9\\s-]", "")
